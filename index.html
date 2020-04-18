@@ -68,8 +68,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script>
+        var sBaseUrl = "http://localhost:3030/cats/random";
         function getFact() {
-            $("#fact").html("Test");
+            var sUrl = sBaseUrl;
+            $.getJSON(sUrl)
+                .done(function (oData) {
+                    $("#fact").html(oData.text);
+                })
+                .fail(function (oError) {
+                    console.error(oError);
+                });
         }
     </script>
 </body>
